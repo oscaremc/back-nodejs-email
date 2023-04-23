@@ -9,7 +9,7 @@ const PORT = process.env.PORT || 3000;
 app.use(express.urlencoded({extended: false}));
 app.use(express.json());
 
-const allowedOrigins = ['http://localhost:4200', 'https://oscaremc.com/home'];
+const allowedOrigins = ['http://localhost:4200/home', 'https://oscaremc.com/home'];
 const corsOptions = {
   origin: function (origin, callback) {
     if (allowedOrigins.indexOf(origin) !== -1 || !origin) {
