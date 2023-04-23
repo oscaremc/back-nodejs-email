@@ -4,6 +4,10 @@ require('dotenv').config();
 
 const nodemailer = require('nodemailer');
 
+router.get('/', async (req, res) => {
+    
+});
+
 router.post('/send-email', async (req, res) => {
     const { name, email, message } = req.body;
 
