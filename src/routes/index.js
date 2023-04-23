@@ -48,7 +48,7 @@ router.post('/send-email', async (req, res) => {
     console.log('Preview URL: %s', nodemailer.getTestMessageUrl(info));
     // Preview URL: https://ethereal.email/message/WaQKMgKddxQDoou...
 
-    res.send('Recibido');
+    res.send(res.json({ mensaje: 'Recibido' }));
 });
 
 module.exports = router;
