@@ -1,8 +1,8 @@
 const express = require('express');
 const app = express();
+const cors = require('cors');
 const path = require('path');
 const route = require('./routes/index');
-const cors = require('cors');
 
 const PORT = process.env.PORT || 3000;
 
@@ -22,10 +22,10 @@ const corsOptions = {
   allowedHeaders: ['Content-Type', 'Authorization'],
   optionsSuccessStatus: 200,
 };
-// Manejador de solicitudes OPTIONS
-app.options('*', cors(corsOptions));
 
 app.use(cors(corsOptions));
+
+app.options('*', cors(corsOptions));
 
 app.use("/", route);
 
