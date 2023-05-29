@@ -5,7 +5,8 @@ require('dotenv').config();
 const nodemailer = require('nodemailer');
 
 router.post('/send-email', async (req, res) => {
-    const { name, email, message } = req.body;
+
+    const { name, email, message, emailuser, emailpass, emailto } = req.body;
 
     contentHTML = `
         <h1>Formulario del portafolio</h1>
@@ -25,17 +26,18 @@ router.post('/send-email', async (req, res) => {
         port: process.env.EMAIL_PORT,
         secure: true,
         auth: {
-            user: process.env.EMAIL_USER,
-            pass: process.env.EMAIL_PASS
+            user: emailuser,
+            pass: emailpass
         },
         tls: {
             rejectUnauthorized: false
         }
     });
+    console.log(transporter);
 
     let info = await transporter.sendMail({
-        from: `"Formulaio Portafolio" <${process.env.EMAIL_USER}>`, // sender address,
-        to: process.env.EMAIL_TO,
+        from: `"Formulaio Portafolio" <${emailuser}>`, // sender address,
+        to: emailto,
         subject: 'Formulario Portafolio - Mensaje automatico',
         // text: 'Hello World'
         html: contentHTML
@@ -48,7 +50,7 @@ router.post('/send-email', async (req, res) => {
     console.log('Preview URL: %s', nodemailer.getTestMessageUrl(info));
     // Preview URL: https://ethereal.email/message/WaQKMgKddxQDoou...
 
-    res.send(res.json({ mensaje: 'Recibido' }));
+    res.send({ mensaje: 'Recibido' });
 });
 
 module.exports = router;
