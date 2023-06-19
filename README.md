@@ -21,6 +21,9 @@
   }
 }
 
+# npm run build
+npx @cloudflare/next-on-pages@1
+
 # Para una correcta respuesta se debe enviar desde el front
 
 {
