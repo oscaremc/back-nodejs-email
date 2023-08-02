@@ -15,10 +15,10 @@ app.get("/", async (req, res) => {
   res.status(200).contentType('text/plain').send(`WELCOME`);
 });
 
-app.get("/send-email", route);
+app.post("/send-email", route);
 
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.listen(PORT, () => {
-    console.log(`server running on port ${PORT}`);
-  });
+  console.log(`server running on port ${PORT}`);
+});
